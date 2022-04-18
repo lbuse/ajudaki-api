@@ -5,7 +5,7 @@ import { PasswordHelper, TokenHelper } from '../helpers/SecurityHelper'
 import AuthenticationModel from '../models/AuthenticationModel'
 import ErrorModel from '../models/ErrorModel'
 import UserModel from '../models/UserModel'
-import Validators from '../utils/validators'
+import Validators from '../utils/Validators'
 
 class UserService {
   constructor(dao) {
