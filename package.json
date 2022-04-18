@@ -1,0 +1,46 @@
+{
+  "name": "ajudaki-api",
+  "version": "0.0.1",
+  "description": "API da aplicação ajudaki",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon -r esm -r dotenv/config.js ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "projetova",
+    "ucs"
+  ],
+  "author": "Grupo 05",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "helmet": "^5.0.2",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^3.0.0",
+    "moment": "^2.29.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.15"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".vscode",
+      "node_modules",
+      "test",
+      "coverage"
+    ],
+    "ext": "js, json, mjs, yaml"
+  }
+}
