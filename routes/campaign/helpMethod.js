@@ -1,7 +1,7 @@
 'use strict'
 import express from 'express'
 import CampaignHelpMethodDao from '../../dao/CampaignHelpMethodDao'
-import DatabaseHelper from '../../helpers/Databasehelper'
+import DatabaseHelper from '../../helpers/DatabaseHelper'
 import CampaignHelpMethodService from '../../services/CampaignHelpMethodService'
 import { TokenHelper } from '../../helpers/SecurityHelper'
 

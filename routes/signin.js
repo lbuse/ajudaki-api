@@ -1,7 +1,7 @@
 'use strict'
 import express from 'express'
 import UserDao from '../dao/UserDao'
-import DatabaseHelper from '../helpers/Databasehelper'
+import DatabaseHelper from '../helpers/DatabaseHelper'
 import UserService from '../services/UserService'
 
 const router = express.Router()

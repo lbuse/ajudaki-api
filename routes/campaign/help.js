@@ -1,7 +1,7 @@
 'use strict'
 import express from 'express'
 import HelpDoneDao from '../../dao/HelpDoneDao'
-import DatabaseHelper from '../../helpers/Databasehelper'
+import DatabaseHelper from '../../helpers/DatabaseHelper'
 import HelpDoneService from '../../services/HelpDoneService'
 import { TokenHelper } from '../../helpers/SecurityHelper'
 
