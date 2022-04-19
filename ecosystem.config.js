@@ -7,6 +7,6 @@ module.exports = {
     autorestart: true,
     watch: true,
     ignore_watch : ['node_modules', 'public'],
-    max_memory_restart: '512MB'
+    max_memory_restart: '512M'
   }]
 };
