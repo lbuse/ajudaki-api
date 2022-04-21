@@ -19,7 +19,8 @@ class HelpDoneService {
               in: ['params'],
               optional: false,
               isNumeric: { options: { min: 1, max: Number.MAX_VALUE } },
-              trim: true
+              trim: true,
+              errorMessage: 'Código inválido',
             }
           })
         ]
@@ -29,12 +30,20 @@ class HelpDoneService {
             in: ['params', 'query'],
             optional: false,
             isNumeric: { options: { min: 1, max: Number.MAX_VALUE } },
-            trim: true
+            trim: true,
+            errorMessage: 'Código inválido',
           }
         })
       case 'add':
         return [
-          body('campaignId').isNumeric({ min: 1, max: Number.MAX_VALUE }).withMessage('ID inválido'),
+          // checkSchema({
+          //     id: {
+          //       in: ['params'],
+          //       optional: false,
+          //       isNumeric: { options: { min: 1, max: Number.MAX_VALUE } },
+          //       trim: true
+          //     },
+          // }),
           body('methodId').isNumeric({ min: 1, max: Number.MAX_VALUE }).withMessage('ID inválido'),
           body('logDonation').isLength({ min: 3 }).withMessage('Log deve ter no mínimo 3 caracteres'),
         ]
@@ -44,7 +53,8 @@ class HelpDoneService {
             in: ['params', 'query'],
             optional: false,
             isNumeric: { options: { min: 1, max: Number.MAX_VALUE } },
-            trim: true
+            trim: true,
+            errorMessage: 'Código inválido',
           }
         })
     }
@@ -94,7 +104,7 @@ class HelpDoneService {
     if (Validators.haltOnValidationErrors(req, res))
       return
 
-    let campaignId = req.body.campaignId
+    let campaignId = req.params.id
     let methodId = req.body.methodId
     let logDonation = req.body.logDonation
 
@@ -108,7 +118,9 @@ class HelpDoneService {
         })
       )
     } catch (e) {
-      return next(createError(new ErrorModel(e.text, { code: e.code })))
+      if (e.code !== 'ER_NO_REFERENCED_ROW_2' && e.code !== 'ER_WARN_DATA_OUT_OF_RANGE') {
+        return next(createError(new ErrorModel(e.text, { code: e.code })))
+      }
     }
 
     req.accepts('application/json')
@@ -117,7 +129,7 @@ class HelpDoneService {
     } else {
       res
         .status(400)
-        .json(new ErrorModel('Não foi possível finalizar a ajuda', { code: 400 }))
+        .json(new ErrorModel('Não foi possível concluir a ajuda', { code: 400 }))
     }
   }
 
