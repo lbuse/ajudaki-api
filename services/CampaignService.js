@@ -13,24 +13,7 @@ class CampaignService {
   static validate = (method) => {
     switch (method) {
       case 'getAll':
-        return [
-          // checkSchema({
-          //   filters: {
-          //     in: ['params', 'query'],
-          //     optional: true,
-          //     isArray: {
-          //       bail: true,
-          //       options: {
-          //         min: 0,
-          //       },
-          //     },
-          //     trim: true
-          //   },
-          //   "filters.*.id": {
-          //     isInt: true
-          //   }
-          // })
-        ]
+        return []
       case 'getById':
       case 'getByUserId':
         return checkSchema({
@@ -72,7 +55,9 @@ class CampaignService {
       return
 
     let searchText = req.query.q || ''
-    let helpMethods = req.query.filters && Array.isArray(req.query.filters) || []
+    let helpMethods = req.query.filters && Array.isArray(req.query.filters)
+      ? req.query.filters
+      : []
 
     let data = []
     try {

@@ -28,7 +28,7 @@ class CampaignDao {
 
       whereString += '('
       for(let i = 0; i < filters.length; i++) {
-        whereString += 'apd.id_forma = ?'
+        whereString += 'apf.id_forma = ?'
         if(i < filters.length - 1) {
           whereString += ' OR '
         }
